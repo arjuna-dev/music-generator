@@ -4,9 +4,9 @@ import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
-import Home from '../components/home.vue';
-import About from '../components/about.vue';
-import Contact from '../components/contact.vue';
+import Home from '@/components/home.vue';
+import About from '@/components/about.vue';
+import Contact from '@/components/contact.vue';
 
 export default new Router({
   routes: [
@@ -33,18 +33,18 @@ export default new Router({
   ]
 })
 
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: __dirname,
-//   routes: [
-//     { path: '/', component: HelloWorld },
-//     { path: '/about', component: About },
-//     { path: '/contact', component: Contact } 
-//   ]
-// });
+// import Vue from 'vue'
+// import Router from 'vue-router'
+// import HelloWorld from '@/components/HelloWorld'
 
-// new Vue({
-//   el: '#app',
-//   router,
-//   render: h => h(App)
-// })  
+// Vue.use(Router)
+
+// export default new Router({
+//   routes: [
+//     {
+//       path: '/',
+//       name: 'HelloWorld',
+//       component: HelloWorld
+//     }
+//   ]
+// })
