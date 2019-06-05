@@ -1,22 +1,29 @@
 <template>
 <div>
   <h1>Home</h1>
+  <button v-on:click="getC4">C4</button>
 </div>
 </template>
 
 <script>
-import Tone from "tone";
+import Tone from 'tone'
 
-//create a synth and connect it to the master output (your speakers)
-var synth = new Tone.Synth().toMaster()
-//play a middle 'C' for the duration of an 8th note
-synth.triggerAttackRelease('C4', '8n')
 
 export default {
   name: 'Home',
   data () {
-
-  }
+    return {
+      msg: 'Welcome to Your Vue.js App',
+      //create a synth and connect it to the master output (your speakers)
+      synth: new Tone.Synth().toMaster()
+    }
+  },
+  methods: {
+    getC4: function(event){
+      //play a middle 'C' for the duration of an 8th note
+      this.synth.triggerAttackRelease('C4', '8n')
+    }
+  },
 }
 </script>
 

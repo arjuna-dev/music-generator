@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Settings',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
