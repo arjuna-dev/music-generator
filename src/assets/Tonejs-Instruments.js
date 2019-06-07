@@ -1,14 +1,19 @@
-/**
-* @fileoverview A sample library and quick-loader for tone.js
-* 
-* @author N.P. Brosowsky (nbrosowsky@gmail.com)
-* https://github.com/nbrosowsky/tonejs-instruments
+/*
+A sample library and quick-loader for tone.js
+N.P. Brosowsky (nbrosowsky@gmail.com)
+https://github.com/nbrosowsky/tonejs-instruments
 */
+import Tone from 'tone'
 
-var SampleLibrary = {
+export default{
+SampleLibrary: {
+    aFunc: function(){
+        alert('The sample library is working')
+    },
+
     minify: false,
     ext: '.[mp3|ogg]', // use setExt to change the extensions on all files // do not change this variable //
-    baseUrl: 'samples/',
+    baseUrl: '../assets/samples/',
     list: ['bass-electric','bassoon','cello','clarinet','contrabass','flute','french-horn','guitar-acoustic','guitar-electric','guitar-nylon', 'harmonium','harp','organ','piano','saxophone','trombone','trumpet','tuba','violin','xylophone'],
     onload: null,
   
@@ -643,4 +648,5 @@ var SampleLibrary = {
     }
 
 
+}
 }
