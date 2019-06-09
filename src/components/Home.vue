@@ -11,7 +11,6 @@
   <p> BPM = {{ bpm }} </p>
   <button @click="bpmPlusOne"> +1 </button>
   <button @click="bpmPlusFive"> +5 </button>
-  
 
 </div>
 </template>
@@ -19,18 +18,7 @@
 <script>
 
 import Tone from 'tone'
-import Test from '../assets/test'
 import toneInstruments from '../assets/Tonejs-Instruments'
-
-
-// Test.aFunction()
-
-// var funcion = Test.dict['aFunction']
-
-// var aFunc = toneInstruments.SampleLibrary['aFunc']
-// var aFunc = toneInstruments.SampleLibrary.aFunc
-
-// aFunc()
 
 // Note durations
 // '4n' = quarter note
@@ -38,57 +26,54 @@ import toneInstruments from '../assets/Tonejs-Instruments'
 // '2m' = two measures
 // '8n.' = dotted-eighth note
 
-
 export default {
   name: 'Home',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      //create a synth and connect it to the master output (your speakers)
+      // Create a synth and connect it to the master output (your speakers)
       synth: new Tone.FMSynth().toMaster(),
       aFunc: toneInstruments.SampleLibrary.aFunc,
       SampleLibrary: toneInstruments.SampleLibrary,
-      loopBeat : new Tone.Loop(this.song, '4n'),
-      bpm: 120,
-
+      loopBeat: new Tone.Loop(this.song, '4n'),
+      bpm: 120
     }
   },
   methods: {
-    bpmMinOne(){
-      this.bpm -= 1;
+    bpmMinOne () {
+      this.bpm -= 1
     },
-    bpmMinFive(){
-      this.bpm -= 5;
+    bpmMinFive () {
+      this.bpm -= 5
     },
-    bpmPlusOne(){
-      this.bpm += 1;
+    bpmPlusOne () {
+      this.bpm += 1
     },
-    bpmPlusFive(){
-      this.bpm += 5;
+    bpmPlusFive () {
+      this.bpm += 5
     },
-    getC4: function(event){
+    getC4: function (event) {
       this.synth.triggerAttackRelease('C4', '8n.')
     },
-    playPiano: function(event){
-      this.SampleLibrary.load({instruments:'piano'})
+    playPiano: function (event) {
+      this.SampleLibrary.load({instruments: 'piano'})
       // this.aFunc()
       // this.loadPiano.toMaster()
       // this.loadPiano.triggerAttack("A3")
     },
-    startLoop(){
-      Tone.Transport.bpm.value = this.bpm;
-      Tone.Transport.start();
-      this.loopBeat.start(+0.1);
+    startLoop () {
+      Tone.Transport.bpm.value = this.bpm
+      Tone.Transport.start()
+      this.loopBeat.start(+0.1)
     },
-    song(time){
-      console.log(time);
-      var bassSynth = new Tone.MembraneSynth().toMaster();
-      bassSynth.triggerAttackRelease('C2' , '8n', time);
-   } 
+    song (time) {
+      console.log(time)
+      var bassSynth = new Tone.MembraneSynth().toMaster()
+      bassSynth.triggerAttackRelease('C2', '8n', time)
+    }
   },
-  beforeMount: function(){
-    
-  },
+  beforeMount: function () {
+  }
 }
 </script>
 
