@@ -3,6 +3,16 @@
   <h1>Home</h1>
   <button v-on:click='getC4'>C4</button>
   <button v-on:click='playPiano'>playPiano</button>
+  <button @click="startLoop"> Play the Beat </button>
+  <br>
+  <br>
+  <button @click="bpmMinFive"> -5 </button>
+  <button @click="bpmMinOne"> -1 </button>
+  <p> BPM = {{ bpm }} </p>
+  <button @click="bpmPlusOne"> +1 </button>
+  <button @click="bpmPlusFive"> +5 </button>
+  
+
 </div>
 </template>
 
@@ -37,10 +47,25 @@ export default {
       //create a synth and connect it to the master output (your speakers)
       synth: new Tone.FMSynth().toMaster(),
       aFunc: toneInstruments.SampleLibrary.aFunc,
-      SampleLibrary: toneInstruments.SampleLibrary
+      SampleLibrary: toneInstruments.SampleLibrary,
+      loopBeat : new Tone.Loop(this.song, '4n'),
+      bpm: 120,
+
     }
   },
   methods: {
+    bpmMinOne(){
+      this.bpm -= 1;
+    },
+    bpmMinFive(){
+      this.bpm -= 5;
+    },
+    bpmPlusOne(){
+      this.bpm += 1;
+    },
+    bpmPlusFive(){
+      this.bpm += 5;
+    },
     getC4: function(event){
       this.synth.triggerAttackRelease('C4', '8n.')
     },
@@ -50,6 +75,16 @@ export default {
       // this.loadPiano.toMaster()
       // this.loadPiano.triggerAttack("A3")
     },
+    startLoop(){
+      Tone.Transport.bpm.value = this.bpm;
+      Tone.Transport.start();
+      this.loopBeat.start(+0.1);
+    },
+    song(time){
+      console.log(time);
+      var bassSynth = new Tone.MembraneSynth().toMaster();
+      bassSynth.triggerAttackRelease('C2' , '8n', time);
+   } 
   },
   beforeMount: function(){
     
