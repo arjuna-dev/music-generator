@@ -11,7 +11,7 @@ export default {
     minify: false,
     ext: '.[mp3|ogg]', // use setExt to change the extensions on all files // do not change this variable //
     baseUrl: '../../static/samples/',
-    list: ['bass-electric', 'bassoon', 'cello', 'clarinet', 'contrabass', 'flute', 'french-horn', 'guitar-acoustic', 'guitar-electric', 'guitar-nylon', 'harmonium', 'harp', 'organ', 'piano', 'saxophone', 'trombone', 'trumpet', 'tuba', 'violin', 'xylophone'],
+    list: ['bassElectric', 'bassoon', 'cello', 'clarinet', 'contrabass', 'flute', 'frenchHorn', 'guitarAcoustic', 'guitarElectric', 'guitarNylon', 'harmonium', 'harp', 'organ', 'piano', 'saxophone', 'trombone', 'trumpet', 'tuba', 'violin', 'xylophone'],
     onload: null,
 
     setExt: function (newExt) {
@@ -110,7 +110,7 @@ export default {
         return s
       }
     },
-    'bass-electric': {
+    'bassElectric': {
       'A#2': 'As2.[mp3|ogg]',
       'A#3': 'As3.[mp3|ogg]',
       'A#4': 'As4.[mp3|ogg]',
@@ -217,7 +217,7 @@ export default {
       'A3': 'A3.[mp3|ogg]',
       'A4': 'A4.[mp3|ogg]'
     },
-    'french-horn': {
+    'frenchHorn': {
       'D2': 'D2.[mp3|ogg]',
       'D4': 'D4.[mp3|ogg]',
       'D#1': 'Ds1.[mp3|ogg]',
@@ -229,7 +229,7 @@ export default {
       'C1': 'C1.[mp3|ogg]',
       'C3': 'C3.[mp3|ogg]'
     },
-    'guitar-acoustic': {
+    'guitarAcoustic': {
       'F3': 'F3.[mp3|ogg]',
       'F#1': 'Fs1.[mp3|ogg]',
       'F#2': 'Fs2.[mp3|ogg]',
@@ -268,7 +268,7 @@ export default {
       'F1': 'F1.[mp3|ogg]',
       'F2': 'F2.[mp3|ogg]'
     },
-    'guitar-electric': {
+    'guitarElectric': {
       'D#3': 'Ds3.[mp3|ogg]',
       'D#4': 'Ds4.[mp3|ogg]',
       'D#5': 'Ds5.[mp3|ogg]',
@@ -287,7 +287,7 @@ export default {
       'C6': 'C6.[mp3|ogg]',
       'C#2': 'Cs2.[mp3|ogg]'
     },
-    'guitar-nylon': {
+    'guitarNylon': {
       'F#2': 'Fs2.[mp3|ogg]',
       'F#3': 'Fs3.[mp3|ogg]',
       'F#4': 'Fs4.[mp3|ogg]',

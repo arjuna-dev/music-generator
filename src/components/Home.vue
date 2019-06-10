@@ -3,6 +3,7 @@
   <h1>Home</h1>
   <button @click='getC4'>C4</button>
   <button @click='playPiano'>playPiano</button>
+  <button @click='scalePlayer'>scalePLayer</button>
   <button @click='startLoop'> Play the Beat </button>
   <br>
   <br>
@@ -32,11 +33,14 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       synth: new Tone.FMSynth().toMaster(),
-      aFunc: toneInstruments.SampleLibrary.aFunc,
       SampleLibrary: toneInstruments.SampleLibrary,
       loopBeat: new Tone.Loop(this.song, '4n'),
       bpm: 120,
-      piano: toneInstruments.SampleLibrary.load({instruments: 'trumpet'})
+      piano: toneInstruments.SampleLibrary.load({instruments: 'piano'}),
+      trumpet: toneInstruments.SampleLibrary.load({instruments: 'trumpet'}),
+      tuba: toneInstruments.SampleLibrary.load({instruments: 'tuba'}),
+      // Scales: steps to add from base note:
+      chinese_scale: [2, 4, 7, 9]
     }
   },
   methods: {
@@ -52,10 +56,10 @@ export default {
     bpmPlusFive () {
       this.bpm += 5
     },
-    getC4: function (event) {
+    getC4 (event) {
       this.synth.triggerAttackRelease('C4', '8n.')
     },
-    playPiano: function (event) {
+    playPiano (event) {
       this.piano.toMaster()
       this.piano.triggerAttackRelease('A2')
     },
@@ -68,9 +72,12 @@ export default {
       console.log(time)
       var bassSynth = new Tone.MembraneSynth().toMaster()
       bassSynth.triggerAttackRelease('C2', '8n', time)
+    },
+    // scalePlayer (baseNote, scale, instrument) {
+    scalePlayer () {
+      console.log(toneInstruments.SampleLibrary.guitarNylon['D3'])
+      // console.log('hey')
     }
-  },
-  beforeMount: function () {
   }
 }
 </script>
