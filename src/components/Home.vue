@@ -75,8 +75,21 @@ export default {
     },
     // scalePlayer (baseNote, scale, instrument) {
     scalePlayer () {
-      console.log(toneInstruments.SampleLibrary.guitarNylon['D3'])
-      // console.log('hey')
+      var baseNote = 'A2'
+      var scale = this.chinese_scale
+      var instrumentNotes = Object.keys(toneInstruments.SampleLibrary.guitarNylon)
+      console.log(scale)
+      var initialIndex = instrumentNotes.indexOf(baseNote)
+      var newScale = [instrumentNotes[initialIndex]]
+      for (var i = 0; i < scale.length; i++) {
+        newScale.push(instrumentNotes[initialIndex + scale[i]])
+      }
+      var multiplier = scale.length + 1
+      for (var x = 0; x < 5; x++) {
+        var randomNote = Math.floor(Math.random()*multiplier)
+        console.log(randomNote)
+      }
+      console.log(newScale)
     }
   }
 }
