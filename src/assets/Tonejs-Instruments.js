@@ -506,7 +506,6 @@ export default {
       'G4': 'G4.[mp3|ogg]',
       'G#2': 'Gs2.[mp3|ogg]',
       'G#3': 'Gs3.[mp3|ogg]',
-      'G#4': 'Gs4.[mp3|ogg]',
       'A3': 'A3.[mp3|ogg]',
       'A4': 'A4.[mp3|ogg]',
       'A#2': 'As2.[mp3|ogg]',
