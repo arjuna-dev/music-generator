@@ -129,7 +129,7 @@ export default {
       }, '4n')
       loop.interval = '4n'
       loop.humanize = true
-      loop.humanize = 325
+      loop.probability = 0.9
       // var seq = new Tone.Sequence(function (time, note) {
       //   var randomNumber = Math.floor(Math.random() * newScale.length)
       //   var randomNote = newScale[randomNumber]
