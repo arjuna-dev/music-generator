@@ -2,6 +2,19 @@
 <div>
   <h1>Home</h1>
   <button @click='getC4'>C4</button>
+  <select name="notePicker" id="notePicker" v-model="selectedNote">
+    <option value="C4">C4</option>
+    <option value="C#4">C#</option>
+    <option value="D4">D</option>
+    <option value="D#4"> D#</option>
+    <option value="E4">E</option>
+    <option value="F4">F</option>
+    <option value="F#4">F#</option>
+    <option value="A4">A</option>
+    <option value="A#4">A#</option>
+    <option value="A#1">A# (for Tuba)</option>
+    <option value="B4">B</option>
+  </select>
   <select name="instrumentPicker" id="instrumentPicker" v-model="selectedInstrument">
     <option value="piano"> piano </option>
     <option value="flute"> flute </option>
@@ -53,6 +66,7 @@ export default {
       trumpet: toneInstruments.SampleLibrary.load({instruments: 'trumpet'}),
       tuba: toneInstruments.SampleLibrary.load({instruments: 'tuba'}),
       flute: toneInstruments.SampleLibrary.load({instruments: 'flute'}),
+      selectedNote: '',
       selectedInstrument: '',
       selectedScale: '',
       myScales: { chinese: [ 0 , 2, 5, 7 ,9],
@@ -98,7 +112,7 @@ export default {
       instrumentio.toMaster()
       var piano = instrumentio
       var noteValues = this.noteValues
-      var baseNote = 'C#4'
+      var baseNote = this.selectedNote
       var newScale = Tone.Frequency(baseNote).harmonize(this.myScales[this.selectedScale])
       console.log('newScale:', newScale)
       console.log('newScale:', JSON.stringify(newScale))
