@@ -9,6 +9,12 @@
     <button @click='playPiano4'>playPiano4</button>
     <button @click='playPiano5'>playPiano5</button>
   </div>
+  <select name="instrumentPicker" id="instrumentPicker" v-model="selectedInstrument">
+    <option value="piano"> piano </option>
+    <option value="flute"> flute </option>
+    <option value="tuba"> tuba </option>
+  </select>
+
   <button @click='scalePlayer'>Chinese Scale</button>
   <button @click='startLoop'> Play the Beat </button>
   <br>
@@ -47,6 +53,7 @@ export default {
       trumpet: toneInstruments.SampleLibrary.load({instruments: 'trumpet'}),
       tuba: toneInstruments.SampleLibrary.load({instruments: 'tuba'}),
       flute: toneInstruments.SampleLibrary.load({instruments: 'flute'}),
+      selectedInstrument: '',
       // Scales: steps to add from base note:
       scale_chinese: [0, 2, 5, 7, 9]
     }
@@ -66,6 +73,8 @@ export default {
     },
     getC4 (event) {
       this.synth.triggerAttackRelease('C4', '4n')
+      console.log(this.selectedInstrument)
+      console.log(instrumentio)
     },
     playPiano (event) {
       this.piano.toMaster()
@@ -99,8 +108,9 @@ export default {
     },
     // scalePlayer (baseNote, scale, instrument) {
     scalePlayer () {
-      this.flute.toMaster()
-      var piano = this.flute
+      var instrumentio = toneInstruments.SampleLibrary.load({instruments: this.selectedInstrument})
+      instrumentio.toMaster()
+      var piano = instrumentio
       var noteValues = this.noteValues
       var baseNote = 'C#4'
       var newScale = Tone.Frequency(baseNote).harmonize(this.scale_chinese)
