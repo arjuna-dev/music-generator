@@ -21,7 +21,7 @@
     <option value="tuba"> tuba </option>
   </select>
   <select name="scalePicker" id="scalePicker" v-model="selectedScale">
-    <option value="chinese"> Chinese Scale </option>
+    <option value="chinese_black_keys"> Chinese Scale </option>
     <option value="majorPentatonic"> Major Pentatonic</option>
     <option value="minorPentatonic"> Minor Pentatonic</option>
     <option value="major"> Major Scale </option>
@@ -69,12 +69,17 @@ export default {
       selectedNote: '',
       selectedInstrument: '',
       selectedScale: '',
-      myScales: { chinese: [ 0 , 2, 5, 7 ,9],
+      myScales: {
                   majorPentatonic: [0, 2, 4, 7, 9],
                   minorPentatonic: [0, 3, 5, 7, 10],
                   major: [ 0, 2, 4, 5, 7, 9, 11],
-                  mixolydian:[ 0, 2, 4, 5, 7, 9, 10]
-
+                  mixolydian:[ 0, 2, 4, 5, 7, 9, 10],
+                  chinese_black_keys: [ 0, 2, 5, 7, 9],
+                  chinese_gong: [ 0, 2, 4, 8, 10],
+                  chinese_shang: [ 0, 2, 6, 8, 12],
+                  chinese_jue: [ 0, 4, 6, 10, 12],
+                  chinese_zi: [ 0, 2, 6, 8, 10],
+                  chinese_yu: [ 0, 4, 6, 8, 12],
       },
      
     }
@@ -130,18 +135,7 @@ export default {
       loop.interval = '4n'
       loop.humanize = true
       loop.probability = 0.9
-      // var seq = new Tone.Sequence(function (time, note) {
-      //   var randomNumber = Math.floor(Math.random() * newScale.length)
-      //   var randomNote = newScale[randomNumber]
-      //   var randomNumber2 = Math.floor(Math.random() * noteValues.length)
-      //   var randomNoteValue = noteValues[randomNumber2]
-      //   piano.triggerAttackRelease(note, '4n')
-        // piano.triggerAttackRelease(note, randomNoteValue)
-        // piano.triggerAttackRelease(randomNote, randomNoteValue)
-      // }, ['C4', [, '', , ], 'G4', ['A4', 'G4']])
-      // }, ['C4', 'E4', 'G4', 'A4'], '4n')
       loop.start(0)
-      // loop.start(0)
       Tone.Transport.start()
     }
   }
