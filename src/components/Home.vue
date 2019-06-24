@@ -106,14 +106,32 @@ export default {
       var newScale = Tone.Frequency(baseNote).harmonize(this.scale_chinese)
       console.log('newScale:', newScale)
       console.log('newScale:', JSON.stringify(newScale))
-      var loop = new Tone.Loop(function (time) {
+
+      // var randomNumber3 = Math.floor(Math.random() * noteValues.length)
+      // var randomNoteValue3 = noteValues[randomNumber3]
+
+      // var loop = new Tone.Loop(function (time) {
+      //   var randomNumber = Math.floor(Math.random() * newScale.length)
+      //   var randomNote = newScale[randomNumber]
+      //   var randomNumber2 = Math.floor(Math.random() * noteValues.length)
+      //   var randomNoteValue = noteValues[randomNumber2]
+      //   piano.triggerAttackRelease(randomNote, randomNoteValue)
+      // }, '')
+      // loop.interval = '4n'
+      // loop.humanize = true
+      // loop.humanize = 325
+      var seq = new Tone.Sequence(function (time, note) {
         var randomNumber = Math.floor(Math.random() * newScale.length)
         var randomNote = newScale[randomNumber]
         var randomNumber2 = Math.floor(Math.random() * noteValues.length)
         var randomNoteValue = noteValues[randomNumber2]
-        piano.triggerAttackRelease(randomNote, randomNoteValue)
-      }, '4n')
-      loop.start(0)
+        piano.triggerAttackRelease(note, '4n')
+        // piano.triggerAttackRelease(note, randomNoteValue)
+        // piano.triggerAttackRelease(randomNote, randomNoteValue)
+      }, ['C4', [, '', , ], 'G4', ['A4', 'G4']])
+      // }, ['C4', 'E4', 'G4', 'A4'], '4n')
+      seq.start(0)
+      // loop.start(0)
       Tone.Transport.start()
     }
   }
