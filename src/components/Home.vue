@@ -2,13 +2,6 @@
 <div>
   <h1>Home</h1>
   <button @click='getC4'>C4</button>
-  <div>
-    <button @click='playPiano'>playPiano</button>
-    <button @click='playPiano2'>playPiano2</button>
-    <button @click='playPiano3'>playPiano3</button>
-    <button @click='playPiano4'>playPiano4</button>
-    <button @click='playPiano5'>playPiano5</button>
-  </div>
   <select name="instrumentPicker" id="instrumentPicker" v-model="selectedInstrument">
     <option value="piano"> piano </option>
     <option value="flute"> flute </option>
@@ -54,7 +47,6 @@ export default {
       tuba: toneInstruments.SampleLibrary.load({instruments: 'tuba'}),
       flute: toneInstruments.SampleLibrary.load({instruments: 'flute'}),
       selectedInstrument: '',
-      // Scales: steps to add from base note:
       scale_chinese: [0, 2, 5, 7, 9]
     }
   },
@@ -73,28 +65,6 @@ export default {
     },
     getC4 (event) {
       this.synth.triggerAttackRelease('C4', '4n')
-      console.log(this.selectedInstrument)
-      console.log(instrumentio)
-    },
-    playPiano (event) {
-      this.piano.toMaster()
-      this.piano.triggerAttackRelease('C4', '1t')
-    },
-    playPiano2 (event) {
-      this.piano.toMaster()
-      this.piano.triggerAttackRelease('C4', '2t')
-    },
-    playPiano3 (event) {
-      this.piano.toMaster()
-      this.piano.triggerAttackRelease('C4', '8n')
-    },
-    playPiano4 (event) {
-      this.piano.toMaster()
-      this.piano.triggerAttackRelease('C4', '8t')
-    },
-    playPiano5 (event) {
-      this.piano.toMaster()
-      this.piano.triggerAttackRelease('C4', '3m')
     },
     startLoop () {
       Tone.Transport.bpm.value = this.bpm
@@ -126,7 +96,7 @@ export default {
         var randomNumber2 = Math.floor(Math.random() * noteValues.length)
         var randomNoteValue = noteValues[randomNumber2]
         piano.triggerAttackRelease(randomNote, randomNoteValue)
-      }, '')
+      }, '4n')
       loop.interval = '4n'
       loop.humanize = true
       loop.humanize = 325
