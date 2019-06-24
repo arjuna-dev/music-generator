@@ -7,6 +7,13 @@
     <option value="flute"> flute </option>
     <option value="tuba"> tuba </option>
   </select>
+  <select name="scalePicker" id="scalePicker" v-model="selectedScale">
+    <option value="chinese"> Chinese Scale </option>
+    <option value="majorPentatonic"> Major Pentatonic</option>
+    <option value="minorPentatonic"> Minor Pentatonic</option>
+    <option value="major"> Major Scale </option>
+    <option value="mixolydian"> Mixolydian Scale </option>
+  </select>
 
   <button @click='scalePlayer'>Chinese Scale</button>
   <button @click='startLoop'> Play the Beat </button>
@@ -47,7 +54,15 @@ export default {
       tuba: toneInstruments.SampleLibrary.load({instruments: 'tuba'}),
       flute: toneInstruments.SampleLibrary.load({instruments: 'flute'}),
       selectedInstrument: '',
-      scale_chinese: [0, 2, 5, 7, 9]
+      selectedScale: '',
+      myScales: { chinese: [ 0 , 2, 5, 7 ,9],
+                  majorPentatonic: [0, 2, 4, 7, 9],
+                  minorPentatonic: [0, 3, 5, 7, 10],
+                  major: [ 0, 2, 4, 5, 7, 9, 11],
+                  mixolydian:[ 0, 2, 4, 5, 7, 9, 10]
+
+      },
+     
     }
   },
   methods: {
@@ -65,6 +80,7 @@ export default {
     },
     getC4 (event) {
       this.synth.triggerAttackRelease('C4', '4n')
+      console.log(this.myScales[this.selectedScale])
     },
     startLoop () {
       Tone.Transport.bpm.value = this.bpm
@@ -83,7 +99,7 @@ export default {
       var piano = instrumentio
       var noteValues = this.noteValues
       var baseNote = 'C#4'
-      var newScale = Tone.Frequency(baseNote).harmonize(this.scale_chinese)
+      var newScale = Tone.Frequency(baseNote).harmonize(this.myScales[this.selectedScale])
       console.log('newScale:', newScale)
       console.log('newScale:', JSON.stringify(newScale))
 
